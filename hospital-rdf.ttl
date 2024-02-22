@@ -1,0 +1,510 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://addlesee.co.uk/> .
+
+:Hospital
+  a :Building ;
+  rdfs:label "hospital" ;
+  :accessible "true"^^xsd:boolean ;
+  :visitorFriendly "true"^^xsd:boolean ;
+  :contains :GroundFloor ;
+  :contains :FirstFloor ;
+  :contains :SecondFloor .
+
+:Lobby
+  a :Room ;
+  a :Inside ;
+  rdfs:label "lobby" ;
+  :onRight :Reception ;
+  :sittableRoom "true"^^xsd:boolean .
+
+:WaitingRoom
+  a :Room ;
+  a :Inside ;
+  rdfs:label "waiting room" ;
+  :sittableRoom "true"^^xsd:boolean ;
+  :contains :WaterCooler .
+
+:Courtyard
+  a :Room ;
+  a :Outside ;
+  rdfs:label "courtyard" ;
+  :sittableRoom "true"^^xsd:boolean .
+
+:Cafe
+  a :Room ;
+  a schema:FoodEstablishment ;
+  a :Inside ;
+  rdfs:label "cafe" ;
+  :sittableRoom "true"^^xsd:boolean ;
+  schema:paymentAccepted "Card Only" ;
+  schema:openingHours "Mo-Su 07:00-21:00" ;
+  schema:hasMenu :CafeMenu .
+
+:Road
+  a :Room ;
+  a :Outside ;
+  rdfs:label "road" ;
+  :sittableRoom "false"^^xsd:boolean ;
+  :contains :HospitalBusStop .
+
+:Toilet
+  a :Room ;
+  a :Inside ;
+  rdfs:label "toilet" ;
+  schema:description "the toilets are all private gender-neutral stalls" ;
+  :sittableRoom "false"^^xsd:boolean .
+
+:Hall1
+  a :Room ;
+  a :Inside ;
+  rdfs:label "hall 1" ;
+  :sittableRoom "false"^^xsd:boolean ;
+  :onLeft :Lift ;
+  :onRight :Toilet .
+
+:Hall2
+  a :Room ;
+  a :Inside ;
+  rdfs:label "hall 2" ;
+  :sittableRoom "false"^^xsd:boolean ;
+  :contains :CoffeeMachine .
+
+:MainEntrance
+  a :Door ;
+  rdfs:label "main entrance and exit" ;
+  :attachedTo :Lobby ;
+  :attachedTo :Road .
+
+:BlueDoor1
+  a :Door ;
+  rdfs:label "blue door 1" ;
+  schema:color "blue" ;
+  :attachedTo :Lobby ;
+  :attachedTo :Hall1 .
+
+:BlueDoor2
+  a :Door ;
+  rdfs:label "blue door 2" ;
+  schema:color "blue" ;
+  :attachedTo :Hall1 ;
+  :attachedTo :Cafe .
+
+:RedDoor
+  a :Door ;
+  rdfs:label "red door" ;
+  schema:color "red" ;
+  :attachedTo :Lobby ;
+  :attachedTo :Hall2 .
+
+:GlassDoor
+  a :Door ;
+  rdfs:label "glass door" ;
+  schema:color "glass" ;
+  :attachedTo :Hall2 ;
+  :attachedTo :Courtyard .
+
+:Lift
+  a :Elevator ;
+  rdfs:label "lift" ;
+  :attachedTo :GroundFloor ;
+  :attachedTo :FirstFloor ;
+  :attachedTo :SecondFloor .
+
+:AppointmentRoom17
+  a :Room ;
+  a :AppointmentRoom ;
+  rdfs:label "room 17" ;
+  :contains :DrSmith .
+
+:GroundFloor
+  a :Floor ;
+  rdfs:label "ground floor" ;
+  :contains :Lobby ;
+  :contains :Courtyard ;
+  :contains :Cafe ;
+  :contains :Road ;
+  :contains :Lift ;
+  :contains :Toilet .
+
+:FirstFloor
+  a :Floor ;
+  rdfs:label "first floor" .
+
+:SecondFloor
+  a :Floor ;
+  rdfs:label "second floor" ;
+  :contains :WaitingRoom ;
+  :contains :AppointmentRoom1 ;
+  :contains :AppointmentRoom2 ;
+  :contains :AppointmentRoom3 ;
+  :contains :AppointmentRoom4 ;
+  :contains :AppointmentRoom5 ;
+  :contains :AppointmentRoom6 ;
+  :contains :AppointmentRoom7 ;
+  :contains :AppointmentRoom8 ;
+  :contains :AppointmentRoom9 ;
+  :contains :AppointmentRoom10 ;
+  :contains :AppointmentRoom11 ;
+  :contains :AppointmentRoom12 ;
+  :contains :AppointmentRoom13 ;
+  :contains :AppointmentRoom14 ;
+  :contains :AppointmentRoom15 ;
+  :contains :AppointmentRoom16 ;
+  :contains :AppointmentRoom17 ;
+  :contains :AppointmentRoom18 ;
+  :contains :AppointmentRoom19 ;
+  :contains :AppointmentRoom20 .
+
+:DrSmith
+  a :Doctor ;
+  rdfs:label "Dr Smith" .
+
+:Reception
+  a :Item ;
+  rdfs:label "reception desk" ;
+  schema:description "A taxi can be requested from reception" .
+
+:WaterCooler
+  a :Item ;
+  rdfs:label "water cooler" .
+
+:CoffeeMachine
+  a schema:FoodEstablishment ;
+  rdfs:label "coffee machine" ;
+  schema:hasMenu :CoffeeMachineDrinks .
+
+:AppointmentRoom
+  rdf:subClassOf :Room ;
+  rdfs:label "appointment room" ;
+  schema:description "A room in which appointments take place with the doctor that the room contains" .
+
+:sittableRoom
+  a schema:Property ;
+  rdfs:label "sittable room" ;
+  schema:description "If true, this is a room which people can sit and relax in" .
+
+:Room
+  rdfs:label "room" ;
+  schema:description "Rooms are physical spaces within the hospital grounds" .
+
+:Outside
+  rdfs:label "outside" ;
+  :smokingAllowed "true"^^xsd:boolean ;
+  :maskAdvised "false"^^xsd:boolean ;
+  schema:description "Outside nodes are outdoor areas" .
+
+:Inside
+  rdfs:label "inside" ;
+  :smokingAllowed "false"^^xsd:boolean ;
+  :maskAdvised "true"^^xsd:boolean ;
+  schema:description "Inside nodes are indoor areas" .
+
+:maskAdvised
+  a schema:Property ;
+  rdfs:label "mask advised" ;
+  schema:description: "If true, this indicates that it is recommended for people to wear masks in an indoor room. It is not mandatory, however" .
+
+:Door
+  rdfs:label "door" ;
+  schema:description "All doors can be used to travel from one :Room to another :Room. Each door is linked to the rooms that it connects with the :attachedTo predicate" .
+
+:Elevator
+  rdfs:label "elevator" ;
+  schema:description "All elevators can be used to travel from one :Floor to another :Floor. Each elevator is linked to the floors that it connects with the :attachedTo predicate" .
+
+:Item
+  rdfs:label "item" ;
+  schema:description "Items are physical objects found in rooms" .
+
+:Floor
+  rdfs:label "floor" ;
+  schema:description "A floor in the hospital is a level, or storey, in the building" .
+
+:onRight
+  a schema:Property ;
+  rdf:subClassOf :contains ;
+  rdfs:label "on right" ;
+  schema:description "This indicates that an object is in this room, and it is on your right as you enter" .
+
+:onLeft
+  a schema:Property ;
+  rdf:subClassOf :contains ;
+  rdfs:label "on left" ;
+  schema:description "This indicates that an object is in this room, and it is on your left as you enter" . 
+
+:attachedTo
+  a schema:Property ;
+  rdfs:label "attached to" ;
+  schema:description "This property indicates which rooms or floors are attached by a door or elevator. For example, if a door is attached to two rooms, you can travel between those rooms with the door" .
+
+:Doctor
+  rdf:subClassOf schema:Person ;
+  rdfs:label "doctor" ;
+  schema:description "A person that is a qualified doctor" .
+
+:Breakfast
+  a schema:MenuSection ;
+  rdfs:label "breakfast" ;
+  schema:openingHours "Mo-Su 07:00-11:00" ;
+  schema:hasMenuItem :ContinentalBreakfast ;
+  schema:hasMenuItem :EnglishBreakfast .
+
+:Lunch
+  a schema:MenuSection ;
+  rdfs:label "lunch" ;
+  schema:openingHours "Mo-Su 11:00-16:00" ;
+  schema:hasMenuItem :BeefBroth ;
+  schema:hasMenuItem :GammonSandwich ;
+  schema:hasMenuItem :BeanSalad ;
+  schema:hasMenuItem :CheeseBoard .
+
+:Dinner
+  a schema:MenuSection ;
+  rdfs:label "dinner" ;
+  schema:openingHours "Mo-Su 16:00-21:00" ;
+  schema:hasMenuSection :Starter ;
+  schema:hasMenuSection :MainCourse ;
+  schema:hasMenuSection :Dessert .
+
+:CafeDrinks
+  a schema:MenuSection ;
+  rdfs:label "cafe drinks" ;
+  schema:openingHours "Mo-Su 07:00-21:00" ;
+  schema:hasMenuItem :Soda ;
+  schema:hasMenuItem :Latte ;
+  schema:hasMenuItem :Cappuccino ;
+  schema:hasMenuItem :Americano ;
+  schema:hasMenuItem :FlatWhite ;
+  schema:hasMenuItem :Espresso ;
+  schema:hasMenuItem :BerryTea ;
+  schema:hasMenuItem :PeppermintTea ;
+  schema:hasMenuItem :GreenTea ;
+  schema:hasMenuItem :EarlGreyTea ;
+  schema:hasMenuItem :HotChocolate ;
+  schema:hasMenuItem :Beer ;
+  schema:hasMenuItem :RedWine ;
+  schema:hasMenuItem :WhiteWine .
+
+:CoffeeMachineDrinks
+  a schema:Menu ;
+  rdfs:label "coffee machine drinks" ;
+  schema:hasMenuItem :Americano ;
+  schema:hasMenuItem :Espresso .
+
+:CafeMenu
+  a schema:Menu ;
+  rdfs:label "cafe menu" ;
+  schema:hasMenuSection :Breakfast ;
+  schema:hasMenuSection :Lunch ;
+  schema:hasMenuSection :Dinner ;
+  schema:hasMenuSection :CafeDrinks .
+
+:Starter
+  a schema:MenuSection ;
+  rdfs:label "dinner starters" ;
+  schema:hasMenuItem :MushroomSoup ;
+  schema:hasMenuItem :MeatPlatter ;
+  schema:hasMenuItem :PrawnCocktail .
+
+:MainCourse
+  a schema:MenuSection ;
+  rdfs:label "dinner main courses" ;
+  schema:hasMenuItem :Lasagne ;
+  schema:hasMenuItem :SteakChips ;
+  schema:hasMenuItem :VeganBurger ;
+  schema:hasMenuItem :Pizza .
+
+:Dessert
+  a schema:MenuSection ;
+  rdfs:label "dinner desserts" ;
+  schema:hasMenuItem :PannaCotta ;
+  schema:hasMenuItem :Cake .
+
+:ContinentalBreakfast
+  a schema:MenuItem ;
+  rdfs:label "continental breakfast" .
+
+:EnglishBreakfast
+  a schema:MenuItem ;
+  rdfs:label "english breakfast" .
+
+:BeefBroth
+  a schema:MenuItem ;
+  rdfs:label "beef broth" .
+
+:GammonSandwich
+  a schema:MenuItem ;
+  rdfs:label "gammon sandwich" .
+
+:BeanSalad
+  a schema:MenuItem ;
+  schema:suitableForDiet schema:veganDiet ;
+  rdfs:label "bean salad" .
+
+:CheeseBoard
+  a schema:MenuItem ;
+  rdfs:label "cheese board with local olives and bread" ;
+  schema:suitableForDiet schema:vegetarianDiet .
+
+:MushroomSoup
+  a schema:MenuItem ;
+  rdfs:label "mushroom soup in a bread bowl" ;
+  schema:suitableForDiet schema:vegetarianDiet .
+
+:MeatPlatter
+  a schema:MenuItem ;
+  rdfs:label "meat sharing platter" .
+
+:PrawnCocktail
+  a schema:MenuItem ;
+  rdfs:label "prawn cocktail" .
+
+:Lasagne
+  a schema:MenuItem ;
+  rdfs:label "lasagne" .
+
+:SteakChips
+  a schema:MenuItem ;
+  rdfs:label "steak and chips" .
+
+:VeganBurger
+  a schema:MenuItem ;
+  rdfs:label "vegan burger" ;
+  schema:suitableForDiet schema:veganDiet .
+
+:Pizza
+  a schema:MenuItem ;
+  rdfs:label "pizza" .
+
+:PannaCotta
+  a schema:MenuItem ;
+  rdfs:label "panna cotta" .
+
+:Cake
+  a schema:MenuItem ;
+  rdfs:label "cake of the day" ;
+  schema:suitableForDiet schema:vegetarianDiet .
+
+:Soda
+  a schema:MenuItem ;
+  rdfs:label "soda" .
+
+:Latte
+  a schema:MenuItem ;
+  rdfs:label "latte" .
+
+:Cappuccino
+  a schema:MenuItem ;
+  rdfs:label "cappuccino" .
+
+:Americano
+  a schema:MenuItem ;
+  rdfs:label "americano" .
+
+:FlatWhite
+  a schema:MenuItem ;
+  rdfs:label "flat white" .
+
+:Espresso
+  a schema:MenuItem ;
+  rdfs:label "espresso" .
+
+:BerryTea
+  a schema:MenuItem ;
+  rdfs:label "berry tea" .
+
+:PeppermintTea
+  a schema:MenuItem ;
+  rdfs:label "peppermint tea" .
+
+:GreenTea
+  a schema:MenuItem ;
+  rdfs:label "green tea" .
+
+:EarlGreyTea
+  a schema:MenuItem ;
+  rdfs:label "earl grey tea" .
+
+:HotChocolate
+  a schema:MenuItem ;
+  rdfs:label "hot chocolate" .
+
+:Beer
+  a schema:MenuItem ;
+  rdfs:label "beer" .
+
+:RedWine
+  a schema:MenuItem ;
+  rdfs:label "red wine" .
+
+:WhiteWine
+  a schema:MenuItem ;
+  rdfs:label "white wine" .
+
+:YourAppointment
+  a schema:ScheduleAction ;
+  rdfs:label "your appointment" ;
+  schema:startTime "14:30" ;
+  schema:endTime "16:30" ;
+  schema:location :AppointmentRoom17 ;
+  schema:provider :DrSmith ;
+  schema:description "Your appointment will be on time, and it will start with a short interview. You will then have a lumbar puncture, so you will be given a local anaesthetic and an aspirin. You will discuss the next steps with your doctor afterwards" ;
+  schema:comment "You cannot drive after this appointment, as aspirin makes you drowsy" .
+
+:accessible
+  a schema:Property ;
+  rdfs:label "accessible" ;
+  schema:description "This property indicates whether an :Building is accessible for wheelchair users" .
+
+:visitorFriendly
+  a schema:Property ;
+  rdfs:label "visitor friendly" ;
+  schema:description "This property indicates whether a :Building allows visitors 24/7" .
+
+:smokingAllowed
+  a schema:Property ;
+  rdfs:label "smoking allowed" ;
+  schema:description "This property indicates whether a :Room allows smoking" .
+
+:HospitalBusStop
+  a schema:BusStop ;
+  rdfs:label "hospital bus stop" .
+  
+:CityCentreBusStop
+  a schema:BusStop ;
+  rdfs:label "city centre bus stop" .
+
+:HospitalToCity
+  a schema:BusTrip ;
+  rdfs:label "hospital to city centre bus trip" ;
+  schema:busNumber "14" ;
+  schema:departureBusStop :HospitalBusStop ;
+  schema:arrivalBusStop :CityCentreBusStop ;
+  schema:description "The 14 bus leaves at 20 past the hour, every hour" .
+
+:You
+  a schema:Person ;
+  a foaf:Person ;
+  rdfs:label "you" ;
+  :currentLocation :Lobby ;
+  :currentTime "11:40" ;
+  schema:description "This entity represents you, and links you to your current location and the current time" .
+
+:currentLocation
+  a schema:Property ;
+  rdfs:label "current location" ;
+  schema:description "This property indicates which room you are currently located in" .
+
+:currentTime
+  a schema:Property ;
+  rdfs:label "current time" ;
+  schema:description "This property is the current time" .
+
+:contains
+  a schema:Property ;
+  rdfs:label "contains" ;
+  schema:description "This property links a room to items contained within it" .
