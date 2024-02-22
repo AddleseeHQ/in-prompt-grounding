@@ -1,0 +1,57 @@
+## Directions
+Where is the cafe, dir
+How do I get to the lifts, dir
+Where's the reception, dir
+Where can I find room 17, dir
+How can I find the exit, dir
+How do I find the coffee machine, dir
+Where can I get a coffee to drink, dir
+Where are the woman's toilets, dir
+Where are the toilets, dir
+Where can i get a latte, dir
+Where can i eat, dir
+Where can I get the bus, dir
+Can you direct me to the courtyard, dir
+
+## Cafe
+What time does the cafe shut, cafe
+When does the cafe open, cafe
+How long until the cafe closes, cafe
+What is being served for lunch today, cafe
+For dinner, what can I have for my main course, cafe
+What are the dinner options in the cafe, cafe
+What are the cafe's breakfast options, cafe
+Are there any vegan options in the cafe, cafe
+Can you list the drinks available at the cafe, cafe
+Does the cafe serve peppermint tea, cafe
+Where can i get a hot chocolate, cafe
+Can i use cash at the cafe, cafe
+Can i pay by card in the cafe, cafe
+
+## Reception
+What room is Dr Smith in, rec
+Can visitors eat in the cafe, rec
+Is the cafe wheelchair accessible, rec
+Can a wheelchair fit in the lift, rec
+Where can i sit down, rec
+Is there a place that i can smoke, rec
+Do i need to where a mask in the hospital, rec
+What are the visiting hours, rec
+What time is the next bus, rec
+What number is the bus, rec
+Can i get a taxi, rec
+How can i get to the city centre, rec
+Is there an outdoor area that I can wait, rec
+
+## Doctor
+Will my appointment be on time, doc
+Do i have time to go to eat before my appointment, doc
+When will i be able to leave, doc
+What will happen during my appointment, doc
+Will i be given any medication today, doc
+Will I be ok to drive home, doc
+Can my companion drive me home, doc
+How long until my appointment, doc
+What time is my appointment at, doc
+Which dr am i seeing today, doc
+What room is my appointment in, doc
